@@ -15,11 +15,10 @@
 	}
 };
 
-// Try with Pmono
-SynthDef(\fakeTHX, {
+SynthDef(\deepChoir, {
 	var env = EnvGen.kr(
-		envelope: Env.adsr(15, \decay.kr(10), 1, 10, curve: \sine),
-		gate: \gate.kr(1),
+		Env.adsr(15, \decay.kr(10), 1, 10, curve: \sine),
+		\gate.kr(1),
 		doneAction: Done.freeSelf,
 	);
 	var chord = \freq.kr(~chaos.value, \lag.kr(10));
@@ -28,14 +27,15 @@ SynthDef(\fakeTHX, {
 		f = f * LFNoise2.kr(rrand(0.3, 0.8)).exprange(1 - meander, 1 + meander);
 		BLowPass.ar(Saw.ar(f), f, 0.6);
 	};
-	sig = Splay.ar(sig, 0.8) * env * \mul.kr(0.5, 3);
+	sig = Splay.ar(sig, 0.8) * env * \mul.kr(0.8, 3);
 	Out.ar(0, sig);
 }).add;
 )
 
+// Let's remake the THX soundmark!
 (
 Routine({
-	var fakeTHX = Synth(\fakeTHX);
+	var fakeTHX = Synth(\deepChoir);
 
 	10.wait;
 

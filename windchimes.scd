@@ -65,7 +65,7 @@ SynthDef(\windchimes, {
 	var bufnum = \buf.kr(~buffs[\bell]);
 	var env = EnvGen.kr(Env.adsr(0.02, 20, 1, 20), \gate.kr(1), doneAction: 2);
 	var windSpeed = LFNoise1.kr(1/30).range(\min.kr(0.05, 10), \max.kr(0.3, 10));
-	var sig = \chord.kr(~just) collect: { |rate|
+	var sig = \chord.kr(~eq5) collect: { |rate|
 		PlayBuf.ar(
 			numChannels: 2,
 			bufnum: bufnum,
@@ -92,7 +92,7 @@ w = Synth(\windchimes);
 // Change params (live!)
 
 // 1. Change the chord
-w.set(\chord, ~eq5, \fund, 1); // pretty
+w.set(\chord, ~just, \fund, 1); // pretty
 w.set(\chord, ~eq7, \fund, 1); // nice
 
 w.set(\chord, ~qt, \fund, 1/2); // sci-fi music
