@@ -6,4 +6,4 @@ SuperCollider is a platform for audio synthesis and algorithmic composition, use
 This repo includes demo code for a talk with some simple examples.
 
 Read more about SuperCollider and find download links on the [SuperCollider
-mwebsite|https://supercollider.github.io/].
+website](https://supercollider.github.io/).
